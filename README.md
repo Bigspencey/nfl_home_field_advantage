@@ -10,4 +10,4 @@ Spencer Smitherman
 
 Database Schema:
 
-[Imgur](http://i.imgur.com/OQmgxWi.png)
+[Imgur](http://i.imgur.com/vStL9GR.png)
