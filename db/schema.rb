@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20140325204558) do
 
   create_table "teams", force: true do |t|
     t.string   "name"
+    t.string   "mascot"
     t.string   "stadium_name"
     t.datetime "created_at"
     t.datetime "updated_at"

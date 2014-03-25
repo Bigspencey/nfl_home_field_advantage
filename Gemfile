@@ -6,6 +6,7 @@ gem 'sass-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'nokogiri'
+gem 'httparty'
 gem 'rspec-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
