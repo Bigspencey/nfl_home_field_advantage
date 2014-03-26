@@ -134,7 +134,7 @@ DEPENDENCIES
   jquery-rails
   nokogiri
   pg
-  rails (= 4.0.0)
+  rails
   rspec-rails
   sass-rails
   turbolinks

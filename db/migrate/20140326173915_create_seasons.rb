@@ -1,12 +1,12 @@
-class CreateYears < ActiveRecord::Migration
+class CreateSeasons < ActiveRecord::Migration
   def change
-    create_table :years do |t|
-    	t.string :year
+    create_table :seasons do |t|
     	t.integer :wins, :losses, :composite
     	t.decimal :avg_offense, :avg_defense, :win_pct
+    	t.belongs_to :year
     	t.belongs_to :team
-
-    	t.timestamps
+    	
+      t.timestamps
     end
   end
 end

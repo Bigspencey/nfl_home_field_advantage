@@ -1,4 +1,6 @@
-class WinLoss < ActiveRecord::Base
+class Year < ActiveRecord::Base
+	has_many :seasons
+	has_many :teams, through: :seasons
 
 	def self.boom!
 
@@ -10,3 +12,4 @@ class WinLoss < ActiveRecord::Base
 		
 	end
 end
+

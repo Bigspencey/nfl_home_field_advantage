@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails'
 gem 'pg'
 gem 'sass-rails'
 gem 'jquery-rails'
