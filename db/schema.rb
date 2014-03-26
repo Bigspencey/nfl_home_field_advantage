@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140326173915) do
     t.string   "name"
     t.string   "mascot"
     t.string   "stadium_name"
+    t.string   "espn_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
