@@ -17,12 +17,19 @@ stadiums = ["University of Phoenix Stadium", "Georgia Dome", "M&T Bank Stadium",
 						"O.co Coliseum", "Lincoln Financial Field", "Heinz Field", "Qualcomm Stadium", "Levi's Stadium",
 						"CenturyLink Field", "Edward Jones Dome", "Raymond James Stadium", "LP Field", "FedEx Field"]
 
-years = ["2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013"]
+years = ["2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013"]
 
-teams.length.times do |i|
-	Team.create(name: teams[i], mascot: mascots[i], stadium_name: stadiums[i])
+teams.each_with_index do |team, index|
+	Team.create(name: team, mascot: mascots[index], stadium_name: stadiums[index])
 end
 
-years.length.times do |i|
-	Year.create(year: years[i])
+years.each do |year|
+	Year.create(year: year)
 end
+
+years.each do |year|
+	mascots.each do |mascot|
+		Season.create(team_id: mascot, year_id: year)
+	end
+end
+

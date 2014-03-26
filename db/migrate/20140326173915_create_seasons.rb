@@ -5,7 +5,7 @@ class CreateSeasons < ActiveRecord::Migration
     	t.decimal :avg_offense, :avg_defense, :win_pct
     	t.belongs_to :year
     	t.belongs_to :team
-    	
+
       t.timestamps
     end
   end
