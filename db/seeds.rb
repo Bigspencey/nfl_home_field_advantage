@@ -27,9 +27,12 @@ years.each do |year|
 	Year.create(year: year)
 end
 
-years.each do |year|
-	mascots.each do |mascot|
-		Season.create(team_id: mascot, year_id: year)
+mascots.each_with_index do |mascot, index|
+	years.each do |year|
+		Season.create(team_id: index, year_id: year)
 	end
 end
+
+
+
 
