@@ -2,7 +2,7 @@ class Season < ActiveRecord::Base
 	belongs_to :team
 	belongs_to :year
 
-	def self.boom!
+	def self.populate_win_loss
 		Season.find_urls
 	end
 
@@ -19,24 +19,26 @@ class Season < ActiveRecord::Base
 	def self.parse_each_url(urls)
 		Team.all.each do |team|
 			urls.each do |url|
-				Season.find_home_win_loss(url, team)
+				data = url.search('.h2').inner_text
+				year = data.scan(/\d{4}/).join
+				Season.find_home_win_loss(url, team, year)
 			end
 		end
 	end
 
-	def self.find_home_win_loss(doc, team)
+	def self.find_home_win_loss(doc, team, year)
 		if doc.search(".#{team.espn_id} a").inner_text == team.name
 			total_record = doc.search(".#{team.espn_id} td:nth-child(6)").inner_text
-			Season.save_home_record(total_record, team)
+			Season.save_home_record(total_record, year, team)
 		end
 	end
 
-	def self.save_home_record(total_record, team)
+	def self.save_home_record(total_record, year, team)
 		wins = total_record.scan(/^\d{1,}/).join.to_i
 		losses = total_record.scan(/-(\d{1,})-/).join.to_i
-		@@counter = 1
-		Season.find(@@counter).update_attributes(wins: wins, losses: losses)
-		@@counter += 1
+		total_games = wins + losses
+		win_pct = (wins).to_f / (total_games).to_f
+		Season.create(wins: wins, losses: losses, year_id: year, team_id: team.id, win_pct: win_pct)
 	end
 
 end

@@ -31,13 +31,3 @@ end
 years.each do |year|
 	Year.create(year: year)
 end
-
-mascots.each_with_index do |mascot, index|
-	years.each do |year|
-		Season.create(team_id: index + 1, year_id: year)
-	end
-end
-
-
-
-
