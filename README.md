@@ -7,3 +7,7 @@ Team:
 
 Darcey Lachtman
 Spencer Smitherman
+
+Database Schema:
+
+[Imgur](http://i.imgur.com/vStL9GR.png)
