@@ -1,6 +1,5 @@
 class Season < ActiveRecord::Base
 	belongs_to :team
-	belongs_to :year
 
 	def self.populate_win_loss
 		Season.find_urls

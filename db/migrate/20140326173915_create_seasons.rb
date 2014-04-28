@@ -3,7 +3,7 @@ class CreateSeasons < ActiveRecord::Migration
     create_table :seasons do |t|
     	t.integer :wins, :losses, :composite
     	t.decimal :avg_offense, :avg_defense, :win_pct
-    	t.belongs_to :year
+    	t.integer :year
     	t.belongs_to :team
 
       t.timestamps
