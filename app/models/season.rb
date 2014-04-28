@@ -2,7 +2,7 @@ class Season < ActiveRecord::Base
 	belongs_to :team
 	belongs_to :year
 
-	def self.populate_win_loss
+	def self.populate_data
 		Season.find_urls
 	end
 
@@ -42,3 +42,10 @@ class Season < ActiveRecord::Base
 	end
 
 end
+
+
+# Take total off and assign best team number 32 and worst team number 1.
+# Take total def and assign best team number 32 and worst team number 1.
+# Add these numbers together per team per season.
+# Multiply this value by the teams win pct.
+# Result is the composite value.
