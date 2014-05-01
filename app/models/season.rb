@@ -1,7 +1,8 @@
+YEARS = ["2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004"]
+
 class Season < ActiveRecord::Base
 	require 'csv'
 	belongs_to :team
-	belongs_to :year
 
 	def self.populate_data
 		Season.find_urls
@@ -11,8 +12,8 @@ class Season < ActiveRecord::Base
 
 	def self.find_urls
 		urls = []
-		Year.all.each do |year|
-			urls << Nokogiri.parse(HTTParty.get("http://espn.go.com/nfl/standings/_/year/#{year.year}/group/1"))
+		YEARS.each do |year|
+			urls << Nokogiri.parse(HTTParty.get("http://espn.go.com/nfl/standings/_/year/#{year}/group/1"))
 		end
 		Season.parse_each_url(urls)
 	end
@@ -39,7 +40,7 @@ class Season < ActiveRecord::Base
 		losses = total_record.scan(/-(\d{1,})-/).join.to_i
 		total_games = wins + losses
 		win_pct = (wins).to_f / (total_games).to_f
-		Season.create(wins: wins, losses: losses, year_id: year, team_id: team.id, win_pct: win_pct)
+		Season.create(wins: wins, losses: losses, year: year, team_id: team.id, win_pct: win_pct)
 	end
 
 end

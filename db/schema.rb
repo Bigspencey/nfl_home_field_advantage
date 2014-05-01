@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140326173915) do
     t.decimal  "avg_offense"
     t.decimal  "avg_defense"
     t.decimal  "win_pct"
-    t.integer  "year_id"
+    t.integer  "year"
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -34,12 +34,6 @@ ActiveRecord::Schema.define(version: 20140326173915) do
     t.string   "mascot"
     t.string   "stadium_name"
     t.string   "espn_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "years", id: false, force: true do |t|
-    t.string   "year"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
