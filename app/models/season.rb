@@ -1,9 +1,10 @@
 YEARS = ["2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004"]
 
 class Season < ActiveRecord::Base
+	require 'csv'
 	belongs_to :team
 
-	def self.populate_win_loss
+	def self.populate_data
 		Season.find_urls
 	end
 
@@ -43,3 +44,10 @@ class Season < ActiveRecord::Base
 	end
 
 end
+
+
+# Take total off and assign best team number 32 and worst team number 1.
+# Take total def and assign best team number 32 and worst team number 1.
+# Add these numbers together per team per season.
+# Multiply this value by the teams win pct.
+# Result is the composite value.

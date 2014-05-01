@@ -25,3 +25,11 @@ espn = ["team-28-22", "team-28-1", "team-28-33", "team-28-2", "team-28-29", "tea
 teams.each_with_index do |team, index|
 	Team.create(name: team, mascot: mascots[index], stadium_name: stadiums[index], espn_id: espn[index])
 end
+
+years = ["2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004"]
+
+start_date = ["2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005"]
+
+teams.each_with_index do |team, index|
+	Team.create(name: team, mascot: mascots[index], stadium_name: stadiums[index], espn_id: espn[index])
+end
