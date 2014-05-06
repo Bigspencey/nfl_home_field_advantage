@@ -36,6 +36,8 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     columnize (0.3.6)
+    d3-rails (3.4.4)
+      railties (>= 3.1)
     debugger (1.6.6)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -128,6 +130,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  d3-rails
   debugger
   httparty
   jbuilder (~> 1.2)
