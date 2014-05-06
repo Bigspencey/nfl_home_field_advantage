@@ -12,12 +12,12 @@ class Season < ActiveRecord::Base
 	end
 
 	def self.calculate_offense(season)
-		season.sort
+		# season.sort
 		# .order(avg_offense: :asc)
 	end
 
 	def self.calculate_defense(season)
-		season.order(avg_defense: :desc)
+		# season.order(avg_defense: :desc)
 	end
 
 # Take total off and assign best team number 32 and worst team number 1.
