@@ -13,3 +13,4 @@ gem 'rspec-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'debugger'
+gem 'd3-rails'
