@@ -1,8 +1,34 @@
 YEARS = ["2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004"]
 
 class Season < ActiveRecord::Base
-	require 'csv'
 	belongs_to :team
+
+	def self.find_composite
+		collection_of_seasons = Season.order(year: :asc).each_slice(32).to_a
+		collection_of_seasons.each do |season|
+			Season.calculate_offense(season)
+			Season.calculate_defense(season)
+		end
+	end
+
+	def self.calculate_offense(season)
+		# season.sort
+		# .order(avg_offense: :asc)
+	end
+
+	def self.calculate_defense(season)
+		# season.order(avg_defense: :desc)
+	end
+
+# Take total off and assign best team number 32 and worst team number 1.
+# Order database by years.
+# Put set of 32 seasons into each year.
+# Order from best to worst offense.
+# 
+# Take total def and assign best team number 32 and worst team number 1.
+# Add these numbers together per team per season.
+# Multiply this value by the teams win pct.
+# Result is the composite value.
 
 	def self.populate_data
 		Season.find_urls
@@ -44,10 +70,3 @@ class Season < ActiveRecord::Base
 	end
 
 end
-
-
-# Take total off and assign best team number 32 and worst team number 1.
-# Take total def and assign best team number 32 and worst team number 1.
-# Add these numbers together per team per season.
-# Multiply this value by the teams win pct.
-# Result is the composite value.
