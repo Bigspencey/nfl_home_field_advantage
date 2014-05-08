@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20140326173915) do
     t.integer  "wins"
     t.integer  "losses"
     t.integer  "composite"
+    t.integer  "off_rank"
+    t.integer  "def_rank"
     t.decimal  "avg_offense"
     t.decimal  "avg_defense"
     t.decimal  "win_pct"

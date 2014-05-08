@@ -7,17 +7,25 @@ class Season < ActiveRecord::Base
 		collection_of_seasons = Season.order(year: :asc).each_slice(32).to_a
 		collection_of_seasons.each do |season|
 			Season.calculate_offense(season)
-			Season.calculate_defense(season)
+			# Season.calculate_defense(season)
 		end
 	end
 
 	def self.calculate_offense(season)
-		# season.sort
-		# .order(avg_offense: :asc)
+		sorted_averages = []
+		sorted_offense = season.sort_by &:avg_offense
+		sorted_offense.each do |team|
+			sorted_averages << team.avg_offense.to_f
+		end
+		Season.save_offense(sorted_averages)
+	end
+
+	def self.save_offense(sorted_averages)
+		p sorted_averages
 	end
 
 	def self.calculate_defense(season)
-		# season.order(avg_defense: :desc)
+		sorted_defense = season.sort_by &:avg_defense
 	end
 
 # Take total off and assign best team number 32 and worst team number 1.
