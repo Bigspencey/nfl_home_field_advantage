@@ -39,7 +39,10 @@ class Season < ActiveRecord::Base
 	end
 
 	def self.calculate_composite
-		
+		Season.all.each do |season|
+			composite = (season.off_rank.to_f + season.def_rank.to_f) * season.win_pct.to_f
+			season.update_attributes(composite: composite)
+		end
 	end
 
 # Take total off and assign best team number 32 and worst team number 1.
