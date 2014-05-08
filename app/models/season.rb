@@ -6,27 +6,27 @@ class Season < ActiveRecord::Base
 	def self.find_composite
 		collection_of_seasons = Season.order(year: :asc).each_slice(32).to_a
 		collection_of_seasons.each do |season|
-			Season.calculate_offense(season)
+			@@counter = 1
+			Season.calculate_offense(season, @@counter)
 			# Season.calculate_defense(season)
 		end
 	end
 
-	def self.calculate_offense(season)
-		sorted_averages = []
+	def self.calculate_offense(season, counter)
 		sorted_offense = season.sort_by &:avg_offense
 		sorted_offense.each do |team|
-			sorted_averages << team.avg_offense.to_f
+			correct_season = (Season.includes(:team).select do |season|
+				season.team.id == team.team_id && season.year == team.year end).first
+			if correct_season
+				correct_season.update_attributes(off_rank: counter)
+				counter += 1
+			end
 		end
-		Season.save_offense(sorted_averages)
 	end
 
-	def self.save_offense(sorted_averages)
-		p sorted_averages
-	end
-
-	def self.calculate_defense(season)
-		sorted_defense = season.sort_by &:avg_defense
-	end
+	# def self.calculate_defense(season)
+	# 	sorted_defense = season.sort_by &:avg_defense
+	# end
 
 # Take total off and assign best team number 32 and worst team number 1.
 # Order database by years.
