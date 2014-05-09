@@ -6,7 +6,39 @@ window.onload = function() {
 			        element: document.getElementById('container'),
 			        scope: 'usa',
 			        fills: {
-	            		defaultFill: '#B8B8B8'
+	            		defaultFill: '#B8B8B8',
+	            		Arizona: '#870619',
+	            		Atlanta: '#BD0D18',
+	            		Baltimore: '#280353',
+	            		Buffalo: '#00338D',
+	            		Carolina: '#000000',
+	            		Chicago: '#03202F',
+	            		Cincinnati: '#000000',
+	            		Cleveland: '#26201E',
+	            		Dallas: '#002244',
+	            		Denver: '#FB4F14',
+	            		Detroit: '#006DB0',
+	            		Greenbay: '#213D30',
+	            		Houston: '#02253A',
+	            		Indianapolis: '#003B7B',
+	            		Jacksonville: '#D0B239',
+	            		Kansascity: '#B20032',
+	            		Miami: '#008D97',
+	            		Minnesota: '#4F2682',
+	            		Newengland: '#0D254C',
+	            		Neworleans: '#D2B887',
+	            		Giants: '#192F6B',
+	            		Jets: '#0C371D',
+	            		Oakland: '#C4C8CB',
+	            		Philadelphia: '#003B48',
+	            		Pittsburgh: '#000000',
+	            		Sandiego: '#08214A',
+	            		Sanfrancisco: '#AF1E2C',
+	            		Seattle: '#06192E',
+	            		StLouis: '#13264B',
+	            		Tampabay: '#B20032',
+	            		Tennessee: '#648FCC',
+	            		Washington: '#773141'
 	            		//any hex, color name or rgb/rgba value,
 	            		
 	        				},
@@ -24,7 +56,7 @@ window.onload = function() {
 			    });
 
 			map.bubbles([
-		       {name: 'Arizona', latitude: 33.5386, longitude: -112.1864, radius: 32, fillKey: 'Arzona'},
+		       {name: 'Arizona', latitude: 33.5386, longitude: -112.1864, radius: 30, fillKey: 'Arizona'},
 		       {name: 'Atlanta', latitude: 33.7550, longitude: -84.3900, radius: 31, fillKey: 'Atlanta'},
 		       {name: 'Baltimore', latitude: 39.2833, longitude: -76.616, radius: 30, fillKey: 'Baltimore'},
 		       {name: 'Buffalo', latitude: 42.9047, longitude: -78.8494, radius: 29, fillKey: 'Buffalo'},
@@ -37,7 +69,7 @@ window.onload = function() {
 		       {name: 'Detroit', latitude: 42.3314, longitude: -83.0458, radius: 22, fillKey: 'Detroit'},
 		       {name: 'Green Bay', latitude: 44.5133, longitude: -88.0158, radius: 21, fillKey: 'Greenbay'},
 		       {name: 'Houston', latitude: 29.7628, longitude: -95.3831, radius: 20, fillKey: 'Houston'},
-		       {name: 'Indianapolis', latitude: 39.7910, longitude: -86.1480, radius: 19, fillKey: 'Inidanapolis'},
+		       {name: 'Indianapolis', latitude: 39.7910, longitude: -86.1480, radius: 19, fillKey: 'Indianapolis'},
 		       {name: 'Jacksonville', latitude: 30.3369, longitude: -81.6614, radius: 18, fillKey: 'Jacksonville'},
 		       {name: 'Kansas City', latitude: 39.0997, longitude: -94.5786, radius: 17, fillKey: 'Kansascity'},
 		       {name: 'Miami', latitude: 25.7877, longitude: -80.2241, radius: 16, fillKey: 'Miami'},
@@ -52,10 +84,10 @@ window.onload = function() {
 		       {name: 'San Diego', latitude: 32.7150, longitude: -117.1625, radius: 7, fillKey: 'Sandiego'},
 		       {name: 'San Francisco', latitude: 37.7083, longitude: -122.2803, radius: 6, fillKey: 'Sanfrancisco'},
 		       {name: 'Seattle', latitude: 47.6097, longitude: -122.3331, radius: 5, fillKey: 'Seattle'},
-		       {name: 'St. Louis', latitude: 38.6272, longitude: -90.1978, radius: 4, fillKey: 'StLouis'},
-		       {name: 'Tampa Bay', latitude: 27.9710, longitude: -82.4650, radius: 3, fillKey: 'Tampabay'},
-		       {name: 'Tennessee', latitude: 36.1667, longitude: -86.7833, radius: 2, fillKey: 'Tennessee'},
-		       {name: 'Washington', latitude: 38.9339, longitude: -76.8967, radius: 1, fillKey: 'Washington'},
+		       {name: 'St. Louis', latitude: 38.6272, longitude: -90.1978, radius: 20, fillKey: 'StLouis'},
+		       {name: 'Tampa Bay', latitude: 27.9710, longitude: -82.4650, radius: 30, fillKey: 'Tampabay'},
+		       {name: 'Tennessee', latitude: 36.1667, longitude: -86.7833, radius: 20, fillKey: 'Tennessee'},
+		       {name: 'Washington', latitude: 38.9339, longitude: -76.8967, radius: 20, fillKey: 'Washington'},
 
 
 	 				    ]);
