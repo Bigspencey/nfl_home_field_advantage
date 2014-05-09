@@ -24,7 +24,7 @@ window.onload = function() {
 			    });
 
 			map.bubbles([
-		       {name: 'Arizona', latitude: 33.5386, longitude: -112.1864, radius: 32, fillKey: 'Arzona'},
+		       {name: 'Arizona', latitude: 33.5386, longitude: -112.1864, radius: 30, fillKey: 'Arizona'},
 		       {name: 'Atlanta', latitude: 33.7550, longitude: -84.3900, radius: 31, fillKey: 'Atlanta'},
 		       {name: 'Baltimore', latitude: 39.2833, longitude: -76.616, radius: 30, fillKey: 'Baltimore'},
 		       {name: 'Buffalo', latitude: 42.9047, longitude: -78.8494, radius: 29, fillKey: 'Buffalo'},

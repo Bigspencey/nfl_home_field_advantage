@@ -14,6 +14,12 @@ class Season < ActiveRecord::Base
 		Season.calculate_composite
 	end
 
+	def self.populate_data
+		Season.find_urls
+	end
+
+	private
+
 	def self.calculate_offense(season, counter)
 		sorted_offense = season.sort_by &:avg_offense
 		sorted_offense.each do |team|
@@ -44,22 +50,6 @@ class Season < ActiveRecord::Base
 			season.update_attributes(composite: composite)
 		end
 	end
-
-# Take total off and assign best team number 32 and worst team number 1.
-# Order database by years.
-# Put set of 32 seasons into each year.
-# Order from best to worst offense.
-# 
-# Take total def and assign best team number 32 and worst team number 1.
-# Add these numbers together per team per season.
-# Multiply this value by the teams win pct.
-# Result is the composite value.
-
-	def self.populate_data
-		Season.find_urls
-	end
-
-	private
 
 	def self.find_urls
 		urls = []
@@ -93,5 +83,4 @@ class Season < ActiveRecord::Base
 		win_pct = (wins).to_f / (total_games).to_f
 		Season.create(wins: wins, losses: losses, year: year, team_id: team.id, win_pct: win_pct)
 	end
-
 end
