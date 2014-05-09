@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 20140326173915) do
   create_table "seasons", force: true do |t|
     t.integer  "wins"
     t.integer  "losses"
-    t.integer  "composite"
     t.integer  "off_rank"
     t.integer  "def_rank"
     t.decimal  "avg_offense"
     t.decimal  "avg_defense"
     t.decimal  "win_pct"
+    t.decimal  "composite"
     t.integer  "year"
     t.integer  "team_id"
     t.datetime "created_at"

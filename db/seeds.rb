@@ -47,3 +47,6 @@ CSV.foreach("lib/assets/total_defense.csv") do |row|
 	end).first
 	season.update_attributes(avg_defense: row[1])
 end
+
+# Seeds off_rank, def_rank, and composite value
+Season.find_composite
