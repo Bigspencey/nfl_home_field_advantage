@@ -141,8 +141,8 @@ d3.slider = function module() {
             .on("click", stopPropagation);
 
         var g = svg.append("g")
-                .attr("transform", "translate(0,30")
-                  .call(axis);
+                .attr("transform", "translate(0,40")
+                .call(axis);
 
         // Horizontal axis
         if (orientation === "horizontal") {

@@ -90,11 +90,6 @@ window.onload = function() {
 	   {name: 'Washington', latitude: 38.9339, longitude: -76.8967, radius: 10, fillKey: 'Washington'}
     ]);
 
-	// d3.select('#slider').call(d3.slider());
-	var axis = d3.svg.axis().orient("bottom").ticks(10);
-
-	// d3.select('#slider').call(d3.slider().axis().orient("top").ticks(10))
-
 	d3.select('#slider').call(d3.slider().axis(true).min(2004).max(2013).step(1));
 
 };
