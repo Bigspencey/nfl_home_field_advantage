@@ -2,7 +2,7 @@
     position: relative;
     font-family: Verdana,Arial,sans-serif;
     font-size: 1.1em;
-    border: 1px solid #aaaaaa;
+    border: 1px solid #000000;
     z-index: 2;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .d3-slider-handle:hover {
-    border: 1px solid #999999;
+    border: 1px solid #000000;
 }
 
 .d3-slider-horizontal .d3-slider-handle {

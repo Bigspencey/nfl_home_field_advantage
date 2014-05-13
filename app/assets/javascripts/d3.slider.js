@@ -7,7 +7,7 @@ d3.slider = function module() {
       step = 0.01,
       animate = true,
       orientation = "horizontal",
-      axis = false,
+      axis = true,
       margin = 50,
       value,
       active = 1,
@@ -140,7 +140,9 @@ d3.slider = function module() {
             .classed("d3-slider-axis d3-slider-axis-" + axis.orient(), true)
             .on("click", stopPropagation);
 
-        var g = svg.append("g");
+        var g = svg.append("g")
+                .attr("transform", "translate(0,30")
+                  .call(axis);
 
         // Horizontal axis
         if (orientation === "horizontal") {
