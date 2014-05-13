@@ -89,6 +89,14 @@ window.onload = function() {
 	   {name: 'Tennessee', latitude: 36.1667, longitude: -86.7833, radius: 20, fillKey: 'Tennessee'},
 	   {name: 'Washington', latitude: 38.9339, longitude: -76.8967, radius: 10, fillKey: 'Washington'}
     ]);
+
+	// d3.select('#slider').call(d3.slider());
+
+	var axis = d3.svg.axis().orient("top").ticks(10);
+
+	// d3.slider().axis( d3.svg.axis().orient("top").ticks(6)
+
+	d3.select('#slider').call(d3.slider().axis(true).min(2004).max(2013).step(1));
 };
 
 
