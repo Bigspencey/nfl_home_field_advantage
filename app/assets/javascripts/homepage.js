@@ -91,10 +91,7 @@ window.onload = function() {
     ]);
 
 	// d3.select('#slider').call(d3.slider());
-
 	var axis = d3.svg.axis().orient("top").ticks(10);
-
-	// d3.slider().axis( d3.svg.axis().orient("top").ticks(6)
 
 	d3.select('#slider').call(d3.slider().axis(true).min(2004).max(2013).step(1));
 };
