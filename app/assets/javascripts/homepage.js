@@ -148,6 +148,7 @@ window.onload = function() {
 
 	$(function() {
     $( "#slider" ).slider({
+    	orientation: "vertical",
       value: 2004,
       min: 2004,
       max: 2013,
