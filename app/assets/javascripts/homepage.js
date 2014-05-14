@@ -8,6 +8,7 @@ window.onload = function() {
     fills: {
   		defaultFill: '#B8B8B8',
   		Arizona: '#870619',
+  		// Arizona2: 'blue',
   		Atlanta: '#BD0D18',
   		Baltimore: '#280353',
   		Buffalo: '#00338D',
@@ -40,7 +41,7 @@ window.onload = function() {
   		Tennessee: '#648FCC',
   		Washington: '#773141'
   		//any hex, color name or rgb/rgba value,
-  		// http://teamcolors.arc90.com/
+  		// Resource: http://teamcolors.arc90.com/
 	            		
 		},
 		geographyConfig: {
@@ -94,11 +95,17 @@ window.onload = function() {
 	
 	for (var i = 0; i < circles.length; i++) { 
 		circles[i].onmouseover = function() { 
-			console.log("success")
-			debugger
-			this.style.fill = "blue" 
+			var data = this.dataset.info
+			var teamName = data.split("\"")[3]
+			
+			this.style.fill = secondaryColors.arizona2
 		}; 
 	}
+
+	var secondaryColors = {
+		arizona2: '#FB4F14'
+	}
+	var arizona2 = "white"
 
 	d3.select('#slider').call(d3.slider().axis(true).min(2004).max(2013).step(1));
 
