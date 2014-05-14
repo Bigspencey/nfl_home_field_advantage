@@ -27,7 +27,7 @@
 }
 
 .d3-slider-vertical {
-    width: .8em;
+    width: 1em;
     height: 100px;
 }      
 
@@ -79,6 +79,7 @@
 
 .d3-slider-axis text {
     font-size: 18px;
+    text-anchor:left;
 }
 
 .d3-slider-vertical .d3-slider-handle {
