@@ -132,7 +132,7 @@ d3.slider = function module() {
         }
 
         // Copy slider scale to move from percentages to pixels
-        axisScale = scale.copy().range([25, sliderLength]);
+        axisScale = scale.copy().range([25, sliderLength - 25]);
           axis.scale(axisScale);
 
           // Create SVG axis container
