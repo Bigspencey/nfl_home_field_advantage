@@ -98,7 +98,7 @@ window.onload = function() {
 			var teamName = data.toLowerCase() + 2
 			this.style.fill = secondaryColors[teamName]
 		}; 
-	}
+	};
 
 	var secondaryColors = {
 		arizona2: '#000000',
@@ -135,11 +135,21 @@ window.onload = function() {
 		washington2: '#FFB612'
 	}
 
+	$.ajax({
+		url: '/',
+		method: 'GET',
+		data: 'composite'
+	}).done(function(data) {
+		debugger
+	})
+
 	d3.select('#slider').call(d3.slider().axis(true).min(2004).max(2013).step(1));
 
 };
 
-
+// Listen for slider event/position
+// Make ajax call to server for composite value
+// Assign that composite value to each bubble
 
 
 
