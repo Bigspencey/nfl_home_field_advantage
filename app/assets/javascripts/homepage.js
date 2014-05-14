@@ -95,17 +95,15 @@ window.onload = function() {
 	
 	for (var i = 0; i < circles.length; i++) { 
 		circles[i].onmouseover = function() { 
-			var data = this.dataset.info
-			var teamName = data.split("\"")[3]
-			
-			this.style.fill = secondaryColors.arizona2
+			var data = this.dataset.info.split("\"")[3].toLowerCase()
+			var teamName = data + 2
+			this.style.fill = secondaryColors[teamName]
 		}; 
 	}
 
 	var secondaryColors = {
 		arizona2: '#FB4F14'
 	}
-	var arizona2 = "white"
 
 	d3.select('#slider').call(d3.slider().axis(true).min(2004).max(2013).step(1));
 
