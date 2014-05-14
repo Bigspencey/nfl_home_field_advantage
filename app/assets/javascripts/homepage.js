@@ -100,6 +100,7 @@ window.onload = function() {
 		}; 
 	};
 
+
 	var secondaryColors = {
 		arizona2: '#000000',
 		atlanta2: '#000000',
@@ -135,19 +136,32 @@ window.onload = function() {
 		washington2: '#FFB612'
 	}
 
+// circles.dataset.info.split("\"")[10].substring(1,3) <- This will find the specific composite value in d3
+	
+
 	$.ajax({
 		url: '/',
-		method: 'GET',
-		data: 'composite'
+		method: 'GET'
 	}).done(function(data) {
-		debugger
+		//call data from controller here
 	})
 
-	d3.select('#slider').call(d3.slider().axis(true).min(2004).max(2013).step(1));
+	$(function() {
+    $( "#slider" ).slider({
+      value: 2004,
+      min: 2004,
+      max: 2013,
+      step: 1,
+      slide: function( event, ui ) {
+        $(this).val( "$" + ui.value );
+      }
+    });
+    $( "#amount" ).val( "$" + $( "#slider" ).slider( "value" ) );
+  });
 
 };
 
-// Listen for slider event/position
+// Listen for event/position
 // Make ajax call to server for composite value
 // Assign that composite value to each bubble
 
