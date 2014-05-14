@@ -153,10 +153,9 @@ window.onload = function() {
       max: 2013,
       step: 1,
       slide: function( event, ui ) {
-        $(this).val( "$" + ui.value );
+        $('#year').empty().append(ui.value)
       }
     });
-    $( "#amount" ).val( "$" + $( "#slider" ).slider( "value" ) );
   });
 
 };
