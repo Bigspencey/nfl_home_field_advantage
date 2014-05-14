@@ -132,7 +132,7 @@ d3.slider = function module() {
         }
 
         // Copy slider scale to move from percentages to pixels
-        axisScale = scale.copy().range([25, sliderLength - 25]);
+        axisScale = scale.copy().range([0, sliderLength]);
           axis.scale(axisScale);
 
           // Create SVG axis container
@@ -141,8 +141,10 @@ d3.slider = function module() {
             .on("click", stopPropagation);
 
         var g = svg.append("g")
-                .attr("transform", "translate(25,40")
-                .call(axis);
+                .attr("transform", "translate(0,30")
+                .call(axis)
+                .selectAll("text")
+                  .style("text-anchor", "inherit");
 
         // Horizontal axis
         if (orientation === "horizontal") {
