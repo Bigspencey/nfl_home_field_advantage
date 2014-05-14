@@ -90,6 +90,16 @@ window.onload = function() {
 	   {name: 'Washington', latitude: 38.9339, longitude: -76.8967, radius: 10, fillKey: 'Washington'}
     ]);
 
+	var circles = d3.selectAll('circle')[0];
+	
+	for (var i = 0; i < circles.length; i++) { 
+		circles[i].onmouseover = function() { 
+			console.log("success")
+			debugger
+			this.style.fill = "blue" 
+		}; 
+	}
+
 	d3.select('#slider').call(d3.slider().axis(true).min(2004).max(2013).step(1));
 
 };
