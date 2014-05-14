@@ -40,7 +40,7 @@ window.onload = function() {
   		Tennessee: '#648FCC',
   		Washington: '#773141'
   		//any hex, color name or rgb/rgba value,
-  		// http://teamcolors.arc90.com/
+  		// Resource: http://teamcolors.arc90.com/
 	            		
 		},
 		geographyConfig: {
@@ -78,17 +78,62 @@ window.onload = function() {
 	   {name: 'New Orleans', latitude: 29.9667, longitude: -90.0500, radius: 13, fillKey: 'Neworleans'},
 	   {name: 'NY Giants', latitude: 40.8171, longitude: -74.0850, radius: 12, fillKey: 'Giants'},
 	   {name: 'NY Jets', latitude: 40.8171, longitude: -74.0850, radius: 11, fillKey: 'Jets'},
-	   {name: 'Oakland', latitude: 37.8044, longitude: -122.2708, radius: 10, fillKey: 'Oakland'},
+	   {name: 'Oakland', latitude: 37.8044, longitude: -122.2708, radius: 20, fillKey: 'Oakland'},
 	   {name: 'Philadelphia', latitude: 39.9500, longitude: -75.1667, radius: 9, fillKey: 'Philadelphia'},
 	   {name: 'Pittsburgh', latitude: 40.4417, longitude: -80.0000, radius: 8, fillKey: 'Pittsburgh'},
-	   {name: 'San Diego', latitude: 32.7150, longitude: -117.1625, radius: 7, fillKey: 'Sandiego'},
-	   {name: 'San Francisco', latitude: 37.7083, longitude: -122.2803, radius: 6, fillKey: 'Sanfrancisco'},
-	   {name: 'Seattle', latitude: 47.6097, longitude: -122.3331, radius: 5, fillKey: 'Seattle'},
+	   {name: 'San Diego', latitude: 32.7150, longitude: -117.1625, radius: 20, fillKey: 'Sandiego'},
+	   {name: 'San Francisco', latitude: 37.7083, longitude: -122.2803, radius: 10, fillKey: 'Sanfrancisco'},
+	   {name: 'Seattle', latitude: 47.6097, longitude: -122.3331, radius: 10, fillKey: 'Seattle'},
 	   {name: 'St. Louis', latitude: 38.6272, longitude: -90.1978, radius: 20, fillKey: 'StLouis'},
 	   {name: 'Tampa Bay', latitude: 27.9710, longitude: -82.4650, radius: 30, fillKey: 'Tampabay'},
 	   {name: 'Tennessee', latitude: 36.1667, longitude: -86.7833, radius: 20, fillKey: 'Tennessee'},
 	   {name: 'Washington', latitude: 38.9339, longitude: -76.8967, radius: 10, fillKey: 'Washington'}
     ]);
+
+	var circles = d3.selectAll('circle')[0];
+	
+	for (var i = 0; i < circles.length; i++) { 
+		circles[i].onmouseover = function() { 
+			var data = this.dataset.info.split("\"")[13]
+			var teamName = data.toLowerCase() + 2
+			this.style.fill = secondaryColors[teamName]
+		}; 
+	}
+
+	var secondaryColors = {
+		arizona2: '#000000',
+		atlanta2: '#000000',
+		baltimore2: '#000000',
+		buffalo2: '#C60C30',
+		carolina2: '#0088CE',
+		chicago2: '#DD4814',
+		cincinnati2: '#FB4F14',
+		cleveland2: '#E34912',
+		dallas2: '#8C8B8A',
+		denver2: '#002244',
+		detroit2: '#C5C7CF',
+		greenbay2: '#FFCC00',
+		houston2: '#B31B34',
+		indianapolis2: '#FFFFFF',
+		jacksonville2: '#007198',
+		kansascity2: '#F2C800',
+		miami2: '#015679',
+		minnesota2: '#FFC52F',
+		newengland2: '#C80815',
+		neworleans2: '#000000',
+		giants2: '#CA001A',
+		jets2: '#FFFFFF',
+		oakland2: '#000000',
+		philadelphia2: '#708090',
+		pittsburgh2: '#F2C800',
+		sandiego2: '#EEC607',
+		sanfrancisco2: '#E6BE8A',
+		seattle2: '#4EAE47',
+		stlouis2: '#C9AF74',
+		tampabay2: '#89765F',
+		tennessee2: '#000080',
+		washington2: '#FFB612'
+	}
 
 	d3.select('#slider').call(d3.slider().axis(true).min(2004).max(2013).step(1));
 
