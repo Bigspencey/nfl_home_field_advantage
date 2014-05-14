@@ -143,8 +143,9 @@ d3.slider = function module() {
         var g = svg.append("g")
                 .attr("transform", "translate(0,30")
                 .call(axis)
-                .selectAll("text")
-                  .style("text-anchor", "inherit");
+                .selectAll("text")  
+              .style("text-anchor", "start")
+                ;
 
         // Horizontal axis
         if (orientation === "horizontal") {

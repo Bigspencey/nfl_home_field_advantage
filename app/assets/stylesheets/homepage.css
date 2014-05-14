@@ -7,11 +7,15 @@ body {
 }
 
 .wrapper {
-	width: 950px;
-  margin-left: auto;
-  margin-right: auto;
+width: 950px;
+  margin:0 auto;
 }
 
 .wrapper > div {
-	margin: 35px 0;
+	margin: 1em 0;
+}
+
+svg.datamap{
+	z-index: -1;
+	height: 35em;
 }

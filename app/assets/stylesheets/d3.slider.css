@@ -58,11 +58,12 @@
     position: relative;
     z-index: 1;  
     width: 1000px;  
+    height: 2em;
 }
 
 .d3-slider-axis-bottom {
     top: .8em;
-    height: 30px;
+    height: 5em;
     color: white;
 
 }
@@ -84,6 +85,7 @@
 
 .d3-slider-axis text {
     font-size: 18px;
+
 }
 
 .d3-slider-vertical .d3-slider-handle {
