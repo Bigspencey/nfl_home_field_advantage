@@ -56,7 +56,7 @@ window.onload = function() {
     });
 
 		map.bubbles([
-	   {name: 'Arizona', latitude: 33.5386, longitude: -112.1864, radius: 30, fillKey: 'Arizona'},
+	   {name: 'Arizona', latitude: 33.5386, longitude: -112.1864, radius: 2, fillKey: 'Arizona'},
 	   {name: 'Atlanta', latitude: 33.7550, longitude: -84.3900, radius: 31, fillKey: 'Atlanta'},
 	   {name: 'Baltimore', latitude: 39.2833, longitude: -76.616, radius: 30, fillKey: 'Baltimore'},
 	   {name: 'Buffalo', latitude: 42.9047, longitude: -78.8494, radius: 29, fillKey: 'Buffalo'},
@@ -136,15 +136,14 @@ window.onload = function() {
 		washington2: '#FFB612'
 	}
 
-// circles.dataset.info.split("\"")[10].substring(1,3) <- This will find the specific composite value in d3
-	
-
 	$.ajax({
 		url: '/',
-		method: 'GET'
-	}).done(function(data) {
-		//call data from controller here
-	})
+		method: 'GET',
+		data: {year: $('#year')[0].innerHTML},
+		contentType: 'json'
+	}).done(function(response) {
+		seasonExecute(response);
+	});
 
 	$(function() {
     $( "#slider" ).slider({
@@ -159,7 +158,16 @@ window.onload = function() {
     });
   });
 
+  function seasonExecute(response) {
+		for (var i = 0; i < circles.length; i++) {
+			circles[i].r.baseVal.value = response[i]
+			debugger
+		}
+	}
+
 };
+
+
 
 // Listen for event/position
 // Make ajax call to server for composite value

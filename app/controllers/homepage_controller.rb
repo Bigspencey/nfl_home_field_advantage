@@ -1,8 +1,9 @@
 class HomepageController < ApplicationController
   def index
-  	@composite = Season.all.first.composite
+  	@year = params[:year]
+  	@composites = Season.return_composites(@year)
   	if request.xhr?
-  		render json: @composite
+  		render json: @composites
   	end
   end
 end
