@@ -163,8 +163,12 @@ window.onload = function() {
 	requestComposite();
 
 	function seasonExecute(response) {
+		// var bubbles = d3.selectAll('circle')
 		for (var i = 0; i < circles.length; i++) {
+			// var bubbles = [[circles[i]]]
+			// debugger
 			circles[i].r.baseVal.value = response[i]
+			// circles[0].transition().duration(800).attr("r", response[i])
 		}
 	}
 
