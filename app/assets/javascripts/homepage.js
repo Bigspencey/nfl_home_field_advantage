@@ -56,7 +56,7 @@ window.onload = function() {
     });
 
 		map.bubbles([
-	   {name: 'Arizona', latitude: 33.5386, longitude: -112.1864, radius: 30, fillKey: 'Arizona'},
+	   {name: 'Arizona', latitude: 33.5386, longitude: -112.1864, radius: 2, fillKey: 'Arizona'},
 	   {name: 'Atlanta', latitude: 33.7550, longitude: -84.3900, radius: 31, fillKey: 'Atlanta'},
 	   {name: 'Baltimore', latitude: 39.2833, longitude: -76.616, radius: 30, fillKey: 'Baltimore'},
 	   {name: 'Buffalo', latitude: 42.9047, longitude: -78.8494, radius: 29, fillKey: 'Buffalo'},
@@ -98,7 +98,8 @@ window.onload = function() {
 			var teamName = data.toLowerCase() + 2
 			this.style.fill = secondaryColors[teamName]
 		}; 
-	}
+	};
+
 
 	var secondaryColors = {
 		arizona2: '#000000',
@@ -135,13 +136,58 @@ window.onload = function() {
 		washington2: '#FFB612'
 	}
 
-	d3.select('#slider').call(d3.slider().axis(true).min(2004).max(2013).step(1));
+	$(function() {
+    $( "#slider" ).slider({
+    	orientation: "vertical",
+      value: 2004,
+      min: 2004,
+      max: 2013,
+      step: 1,
+      slide: function( event, ui ) {
+        $('#year').empty().append(ui.value)
+
+      }
+    });
+  });
+
+	$.ajax({
+		url: '/',
+		method: 'GET',
+		data: {year: $('#year').text()},
+		contentType: 'json'
+	}).done(function(response) {
+		seasonExecute(response);
+	});
+
+
+  function seasonExecute(response) {
+		for (var i = 0; i < circles.length; i++) {
+			circles[i].r.baseVal.value = response[i]
+		}
+	}
+
 
 };
 
 
 
+// Listen for event/position
+// Make ajax call to server for composite value
+// Assign that composite value to each bubble
 
 
+// OBSERVER FUNCTIONS FROM HELL
+
+	// var target = document.querySelector('#year').innerHTML;
+
+	// var observer = new MutationObserver(function(mutations) {
+ //  	mutations.forEach(function(mutation) {
+ //    console.log(mutation.type);
+ //  	});    
+	// });
+
+	// var config = { attributes: true, childList: true, characterData: true };
+
+		// observer.observe(target, config);
 
 
