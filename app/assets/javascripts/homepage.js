@@ -100,7 +100,6 @@ window.onload = function() {
 		}; 
 	};
 
-
 	var secondaryColors = {
 		arizona2: '#000000',
 		atlanta2: '#000000',
@@ -137,35 +136,35 @@ window.onload = function() {
 	}
 
 	$(function() {
-    $( "#slider" ).slider({
+    $("#slider").slider({
     	orientation: "vertical",
       value: 2004,
       min: 2004,
       max: 2013,
       step: 1,
-      slide: function( event, ui ) {
+      slide: function(event, ui) {
         $('#year').empty().append(ui.value)
-
+        requestComposite();
       }
     });
   });
 
-	$.ajax({
-		url: '/',
-		method: 'GET',
-		data: {year: $('#year').text()},
-		contentType: 'json'
-	}).done(function(response) {
-		seasonExecute(response);
-	});
+	function requestComposite() {
+		$.ajax({
+			url: '/',
+			method: 'GET',
+			data: {year: $('#year').text()},
+			contentType: 'json'
+		}).done(function(response) {
+			seasonExecute(response);
+		});
+	}
 
-
-  function seasonExecute(response) {
+	function seasonExecute(response) {
 		for (var i = 0; i < circles.length; i++) {
 			circles[i].r.baseVal.value = response[i]
 		}
 	}
-
 
 };
 
