@@ -6,7 +6,7 @@ class Season < ActiveRecord::Base
 	def self.return_composites(year)
 		composites = []
 		correct_season = Season.where(year: year)
-		sorted_season = correct_season.find(:all, include: :team, order: 'teams.name')
+		sorted_season = correct_season.find(:all, include: :team, order: 'teams.id')
 		sorted_season.each do |season|
 			composites << season.composite.to_f.round(2)
 		end

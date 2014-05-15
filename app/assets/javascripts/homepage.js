@@ -156,7 +156,8 @@ window.onload = function() {
 			data: {year: $('#year').text()},
 			contentType: 'json'
 		}).done(function(response) {
-			seasonExecute(response);
+			seasonExecute(response[0]);
+			console.log(response)
 		});
 	}
 
@@ -166,7 +167,6 @@ window.onload = function() {
 		// var bubbles = d3.selectAll('circle')
 		for (var i = 0; i < circles.length; i++) {
 			// var bubbles = [[circles[i]]]
-			// debugger
 			circles[i].r.baseVal.value = response[i]
 			// circles[0].transition().duration(800).attr("r", response[i])
 		}
@@ -174,4 +174,5 @@ window.onload = function() {
 
 };
 
-
+// New England is getting pushed into an odd place in sorting.
+// Sorting in ruby is weird with "New" and "NY" it keeps pushing
