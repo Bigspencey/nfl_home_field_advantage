@@ -136,15 +136,6 @@ window.onload = function() {
 		washington2: '#FFB612'
 	}
 
-	$.ajax({
-		url: '/',
-		method: 'GET',
-		data: {year: $('#year')[0].innerHTML},
-		contentType: 'json'
-	}).done(function(response) {
-		seasonExecute(response);
-	});
-
 	$(function() {
     $( "#slider" ).slider({
     	orientation: "vertical",
@@ -154,16 +145,27 @@ window.onload = function() {
       step: 1,
       slide: function( event, ui ) {
         $('#year').empty().append(ui.value)
+
       }
     });
   });
 
+	$.ajax({
+		url: '/',
+		method: 'GET',
+		data: {year: $('#year').text()},
+		contentType: 'json'
+	}).done(function(response) {
+		seasonExecute(response);
+	});
+
+
   function seasonExecute(response) {
 		for (var i = 0; i < circles.length; i++) {
 			circles[i].r.baseVal.value = response[i]
-			debugger
 		}
 	}
+
 
 };
 
@@ -174,6 +176,18 @@ window.onload = function() {
 // Assign that composite value to each bubble
 
 
+// OBSERVER FUNCTIONS FROM HELL
 
+	// var target = document.querySelector('#year').innerHTML;
+
+	// var observer = new MutationObserver(function(mutations) {
+ //  	mutations.forEach(function(mutation) {
+ //    console.log(mutation.type);
+ //  	});    
+	// });
+
+	// var config = { attributes: true, childList: true, characterData: true };
+
+		// observer.observe(target, config);
 
 
