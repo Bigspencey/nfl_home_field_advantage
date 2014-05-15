@@ -164,8 +164,6 @@ window.onload = function() {
 		});
 	}
 
-	requestComposite();
-
 	function seasonExecute(response) {
 		// var bubbles = d3.selectAll('circle')
 		for (var i = 0; i < circles.length; i++) {
