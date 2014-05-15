@@ -50,8 +50,11 @@ window.onload = function() {
       popupTemplate: function(geography, data) { //this function should just return a string
         return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
       },
-      popupOnHover: true, //disable the popup while hovering
+      popupOnHover: false, //disable the popup while hovering
       highlightOnHover: false,
+		},
+		bubblesConfig: {
+			popupOnHover: false,
 		},
     });
 
@@ -97,6 +100,7 @@ window.onload = function() {
 			var data = this.dataset.info.split("\"")[13]
 			var teamName = data.toLowerCase() + 2
 			this.style.fill = secondaryColors[teamName]
+			// return '<div class="hoverinfo"><strong>' + teamName + '</strong></div>';
 		}; 
 	};
 
@@ -173,6 +177,3 @@ window.onload = function() {
 	}
 
 };
-
-// New England is getting pushed into an odd place in sorting.
-// Sorting in ruby is weird with "New" and "NY" it keeps pushing

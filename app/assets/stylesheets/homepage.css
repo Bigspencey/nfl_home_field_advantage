@@ -34,9 +34,20 @@ body {
 	margin: 0 auto;
 }
 
-h1{
+h1 {
 	font-size: 75px;
 	margin: 0 auto;
 
+}
+
+p {
+	font-family: 'Josefin Sans', sans-serif;
+	text-align: center;
+	font-size: 19px;
+	color: #EEE;
+}
+
+a {
+	color: #EEE;
 }
 
