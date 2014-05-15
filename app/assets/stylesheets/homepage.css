@@ -40,14 +40,14 @@ h1 {
 
 }
 
-p {
+footer {
+	font-weight: bold;
 	font-family: 'Josefin Sans', sans-serif;
 	text-align: center;
-	font-size: 19px;
+	font-size: 20px;
 	color: #EEE;
 }
 
 a {
 	color: #EEE;
 }
-

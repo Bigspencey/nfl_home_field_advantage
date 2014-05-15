@@ -54,7 +54,7 @@ window.onload = function() {
       highlightOnHover: false,
 		},
 		bubblesConfig: {
-			popupOnHover: false,
+			popupOnHover: true,
 		},
     });
 
@@ -77,10 +77,10 @@ window.onload = function() {
 	   {name: 'Kansas City', latitude: 39.0997, longitude: -94.5786, radius: 17.5, fillKey: 'Kansascity'},
 	   {name: 'Miami', latitude: 25.7877, longitude: -80.2241, radius: 10.88, fillKey: 'Miami'},
 	   {name: 'Minnesota', latitude: 44.9833, longitude: -93.2667, radius: 20.63, fillKey: 'Minnesota'},
-	   {name: 'New England', latitude: 42.0653, longitude: -71.2483, radius: 6.75, fillKey: 'Newengland'},
-	   {name: 'New Orleans', latitude: 29.9667, longitude: -90.0500, radius: 38.25, fillKey: 'Neworleans'},
-	   {name: 'NY Giants', latitude: 40.8171, longitude: -74.0850, radius: 40, fillKey: 'Giants'},
-	   {name: 'NY Jets', latitude: 40.8171, longitude: -74.0850, radius: 7.13, fillKey: 'Jets'},
+	   {name: 'New England', latitude: 42.0653, longitude: -71.2483, radius: 40, fillKey: 'Newengland'},
+	   {name: 'New Orleans', latitude: 29.9667, longitude: -90.0500, radius: 7.13, fillKey: 'Neworleans'},
+	   {name: 'NY Giants', latitude: 40.8171, longitude: -74.0850, radius: 6.75, fillKey: 'Giants'},
+	   {name: 'NY Jets', latitude: 40.8171, longitude: -74.0850, radius: 38.25, fillKey: 'Jets'},
 	   {name: 'Oakland', latitude: 37.8044, longitude: -122.2708, radius: 6.75, fillKey: 'Oakland'},
 	   {name: 'Philadelphia', latitude: 39.9500, longitude: -75.1667, radius: 35, fillKey: 'Philadelphia'},
 	   {name: 'Pittsburgh', latitude: 40.4417, longitude: -80.0000, radius: 52, fillKey: 'Pittsburgh'},
@@ -100,7 +100,6 @@ window.onload = function() {
 			var data = this.dataset.info.split("\"")[13]
 			var teamName = data.toLowerCase() + 2
 			this.style.fill = secondaryColors[teamName]
-			// return '<div class="hoverinfo"><strong>' + teamName + '</strong></div>';
 		}; 
 	};
 
