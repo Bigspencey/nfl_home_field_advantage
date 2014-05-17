@@ -44,53 +44,53 @@ window.onload = function() {
 	            		
 		},
 		geographyConfig: {
-      dataUrl: null, //if not null, datamaps will fetch the map JSON (currently only supports topojson)
-      borderWidth: 1,
-      borderColor: '#FDFDFD',
-      popupTemplate: function(geography, data) { //this function should just return a string
-        return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
-      },
-      popupOnHover: false, //disable the popup while hovering
-      highlightOnHover: false,
-		},
-		bubblesConfig: {
-			popupOnHover: true,
-		},
+	      dataUrl: null, //if not null, datamaps will fetch the map JSON (currently only supports topojson)
+	      borderWidth: 1,
+	      borderColor: '#FDFDFD',
+	      popupTemplate: function(geography, data) { //this function should just return a string
+	        return '<div class="hoverinfo"><strong>' + geography.properties.name + 'score'+  '</strong></div>';
+	      },
+	      popupOnHover: false, //disable the popup while hovering
+	      highlightOnHover: false,
+			},
+			bubblesConfig: {
+				popupOnHover: true,
+			},
     });
 
 		map.bubbles([
-	   {name: 'Arizona', latitude: 33.5386, longitude: -112.1864, radius: 18.13, fillKey: 'Arizona'},
-	   {name: 'Atlanta', latitude: 33.7550, longitude: -84.3900, radius: 42, fillKey: 'Atlanta'},
-	   {name: 'Baltimore', latitude: 39.2833, longitude: -76.616, radius: 16.5, fillKey: 'Baltimore'},
-	   {name: 'Buffalo', latitude: 42.9047, longitude: -78.8494, radius: 24.38, fillKey: 'Buffalo'},
-	   {name: 'Carolina', latitude: 35.2269, longitude: -80.8433, radius: 9.38, fillKey: 'Carolina'},
-	   {name: 'Chicago', latitude: 41.8819, longitude: -87.6278, radius: 3.5, fillKey: 'Chicago'},
-	   {name: 'Cincinnati', latitude: 39.1000, longitude: -84.5167, radius: 18.13, fillKey: 'Cincinnati'},
-	   {name: 'Cleveland', latitude: 41.4822, longitude: -81.6697, radius: 10.5, fillKey: 'Cleveland'},
-	   {name: 'Dallas', latitude: 32.7758, longitude: -96.7967, radius: 21.5, fillKey: 'Dallas'},
-	   {name: 'Denver', latitude: 39.7392, longitude: -104.98475, radius: 41.25, fillKey: 'Denver'},
-	   {name: 'Detroit', latitude: 42.3314, longitude: -83.0458, radius: 9, fillKey: 'Detroit'},
-	   {name: 'Green Bay', latitude: 44.5133, longitude: -88.0158, radius: 16.5, fillKey: 'Greenbay'},
-	   {name: 'Houston', latitude: 29.7628, longitude: -95.3831, radius: 7.13, fillKey: 'Houston'},
-	   {name: 'Indianapolis', latitude: 39.7910, longitude: -86.1480, radius: 35.88, fillKey: 'Indianapolis'},
-	   {name: 'Jacksonville', latitude: 30.3369, longitude: -81.6614, radius: 16, fillKey: 'Jacksonville'},
-	   {name: 'Kansas City', latitude: 39.0997, longitude: -94.5786, radius: 17.5, fillKey: 'Kansascity'},
-	   {name: 'Miami', latitude: 25.7877, longitude: -80.2241, radius: 10.88, fillKey: 'Miami'},
-	   {name: 'Minnesota', latitude: 44.9833, longitude: -93.2667, radius: 20.63, fillKey: 'Minnesota'},
-	   {name: 'New England', latitude: 42.0653, longitude: -71.2483, radius: 40, fillKey: 'Newengland'},
-	   {name: 'New Orleans', latitude: 29.9667, longitude: -90.0500, radius: 7.13, fillKey: 'Neworleans'},
-	   {name: 'NY Giants', latitude: 40.8171, longitude: -74.0850, radius: 6.75, fillKey: 'Giants'},
-	   {name: 'NY Jets', latitude: 40.8171, longitude: -74.0850, radius: 38.25, fillKey: 'Jets'},
-	   {name: 'Oakland', latitude: 37.8044, longitude: -122.2708, radius: 6.75, fillKey: 'Oakland'},
-	   {name: 'Philadelphia', latitude: 39.9500, longitude: -75.1667, radius: 35, fillKey: 'Philadelphia'},
-	   {name: 'Pittsburgh', latitude: 40.4417, longitude: -80.0000, radius: 52, fillKey: 'Pittsburgh'},
-	   {name: 'San Diego', latitude: 32.7150, longitude: -117.1625, radius: 27.13, fillKey: 'Sandiego'},
-	   {name: 'San Francisco', latitude: 37.7083, longitude: -122.2803, radius: 3.13, fillKey: 'Sanfrancisco'},
-	   {name: 'Seattle', latitude: 47.6097, longitude: -122.3331, radius: 19.38, fillKey: 'Seattle'},
-	   {name: 'St. Louis', latitude: 38.6272, longitude: -90.1978, radius: 36, fillKey: 'StLouis'},
-	   {name: 'Tampa Bay', latitude: 27.9710, longitude: -82.4650, radius: 20.5, fillKey: 'Tampabay'},
-	   {name: 'Tennessee', latitude: 36.1667, longitude: -86.7833, radius: 7.5, fillKey: 'Tennessee'},
-	   {name: 'Washington', latitude: 38.9339, longitude: -76.8967, radius: 12.75, fillKey: 'Washington'}
+		   {name: 'Arizona Cardinals', latitude: 33.5386, longitude: -112.1864, radius: 18.13, fillKey: 'Arizona'},
+		   {name: 'Atlanta Falcons', latitude: 33.7550, longitude: -84.3900, radius: 42, fillKey: 'Atlanta'},
+		   {name: 'Baltimore Ravens', latitude: 39.2833, longitude: -76.616, radius: 16.5, fillKey: 'Baltimore'},
+		   {name: 'Buffalo Bills', latitude: 42.9047, longitude: -78.8494, radius: 24.38, fillKey: 'Buffalo'},
+		   {name: 'Carolina Panthers', latitude: 35.2269, longitude: -80.8433, radius: 9.38, fillKey: 'Carolina'},
+		   {name: 'Chicago Bears', latitude: 41.8819, longitude: -87.6278, radius: 3.5, fillKey: 'Chicago'},
+		   {name: 'Cincinnati Bengals', latitude: 39.1000, longitude: -84.5167, radius: 18.13, fillKey: 'Cincinnati'},
+		   {name: 'Cleveland Browns', latitude: 41.4822, longitude: -81.6697, radius: 10.5, fillKey: 'Cleveland'},
+		   {name: 'Dallas Cowboys', latitude: 32.7758, longitude: -96.7967, radius: 21.5, fillKey: 'Dallas'},
+		   {name: 'Denver Broncos', latitude: 39.7392, longitude: -104.98475, radius: 41.25, fillKey: 'Denver'},
+		   {name: 'Detroit Lions', latitude: 42.3314, longitude: -83.0458, radius: 9, fillKey: 'Detroit'},
+		   {name: 'Green Bay Packers', latitude: 44.5133, longitude: -88.0158, radius: 16.5, fillKey: 'Greenbay'},
+		   {name: 'Houston Texans', latitude: 29.7628, longitude: -95.3831, radius: 7.13, fillKey: 'Houston'},
+		   {name: 'Indianapolis Colts', latitude: 39.7910, longitude: -86.1480, radius: 35.88, fillKey: 'Indianapolis'},
+		   {name: 'Jacksonville Jaguars', latitude: 30.3369, longitude: -81.6614, radius: 16, fillKey: 'Jacksonville'},
+		   {name: 'Kansas City Chiefs', latitude: 39.0997, longitude: -94.5786, radius: 17.5, fillKey: 'Kansascity'},
+		   {name: 'Miami Dolphins', latitude: 25.7877, longitude: -80.2241, radius: 10.88, fillKey: 'Miami'},
+		   {name: 'Minnesota Vikings', latitude: 44.9833, longitude: -93.2667, radius: 20.63, fillKey: 'Minnesota'},
+		   {name: 'New England Patriots', latitude: 42.0653, longitude: -71.2483, radius: 40, fillKey: 'Newengland'},
+		   {name: 'New Orleans Saints', latitude: 29.9667, longitude: -90.0500, radius: 7.13, fillKey: 'Neworleans'},
+		   {name: 'NY Giants', latitude: 40.8171, longitude: -74.0850, radius: 6.75, fillKey: 'Giants'},
+		   {name: 'NY Jets', latitude: 40.8171, longitude: -74.0850, radius: 38.25, fillKey: 'Jets'},
+		   {name: 'Oakland Raiders', latitude: 37.8044, longitude: -122.2708, radius: 6.75, fillKey: 'Oakland'},
+		   {name: 'Philadelphia Eagles', latitude: 39.9500, longitude: -75.1667, radius: 35, fillKey: 'Philadelphia'},
+		   {name: 'Pittsburgh Steelers', latitude: 40.4417, longitude: -80.0000, radius: 52, fillKey: 'Pittsburgh'},
+		   {name: 'San Diego Chargers', latitude: 32.7150, longitude: -117.1625, radius: 27.13, fillKey: 'Sandiego'},
+		   {name: 'San Francisco 49ers', latitude: 37.7083, longitude: -122.2803, radius: 3.13, fillKey: 'Sanfrancisco'},
+		   {name: 'Seattle Seahawks', latitude: 47.6097, longitude: -122.3331, radius: 19.38, fillKey: 'Seattle'},
+		   {name: 'St. Louis Rams', latitude: 38.6272, longitude: -90.1978, radius: 36, fillKey: 'StLouis'},
+		   {name: 'Tampa Bay Buccaneers', latitude: 27.9710, longitude: -82.4650, radius: 20.5, fillKey: 'Tampabay'},
+		   {name: 'Tennessee Titans', latitude: 36.1667, longitude: -86.7833, radius: 7.5, fillKey: 'Tennessee'},
+		   {name: 'Washington Redskins', latitude: 38.9339, longitude: -76.8967, radius: 12.75, fillKey: 'Washington'}
     ]);
 
 	var circles = d3.selectAll('circle')[0];
@@ -100,10 +100,12 @@ window.onload = function() {
 			var data = this.dataset.info.split("\"")[13]
 			var teamName = data.toLowerCase() + 2
 			this.style.fill = secondaryColors[teamName]
+			this.style.stroke = '#000000'
 		}; 
 	};
 
 	var secondaryColors = {
+		stroke: "#000000",
 		arizona2: '#000000',
 		atlanta2: '#000000',
 		baltimore2: '#000000',
@@ -141,16 +143,16 @@ window.onload = function() {
 	$(function() {
     $("#slider").slider({
     	orientation: "vertical",
-      value: 2004,
-      min: 2004,
-      max: 2013,
-      step: 1,
-      slide: function(event, ui) {
-        $('#year').empty().append(ui.value)
-        requestComposite();
-      }
-    });
-  });
+     	value: 2004,
+      	min: 2004,
+      	max: 2013,
+      	step: 1,
+      	slide: function(event, ui) {
+	        $('#year').empty().append(ui.value)
+	        requestComposite();
+      		}
+    	});
+ 	 });
 
 	function requestComposite() {
 		$.ajax({
