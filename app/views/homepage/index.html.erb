@@ -7,9 +7,17 @@
 
 <div class="decade-average">
 	<h2>Teams Ranked by Homefield Advantage over the Decade</h2>
-	<% @avg_composites.each do |composite| %>
-	<%= composite %>
-	<% end %>
+	<table>
+		<% counter = 1 %>
+		<% @avg_composites.each do |composite| %>
+			<tr>
+				<td><%= "#{counter}." %></td>
+				<td><%= composite.pop %></td>
+				<td><%= composite.shift %></td>
+				<% counter += 1 %>
+			</tr>
+		<% end %>
+	<table>
 </div>
 
 <footer>

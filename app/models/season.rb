@@ -5,10 +5,13 @@ class Season < ActiveRecord::Base
 
 	def self.avg_composites
 		avg_composites = []
+		team_names = []
 		32.times do |number|
 			avg_composites << Season.where(team_id: number + 1).average(:composite).to_f.round(2)
+			team_names << Season.find_by(team_id: number + 1).team.name
 		end
-		avg_composites
+		teams_composites = avg_composites.zip(team_names)
+		teams_composites.sort_by(&:first).reverse
 	end
 
 	def self.return_composites(year)
