@@ -3,6 +3,14 @@ YEARS = ["2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005",
 class Season < ActiveRecord::Base
 	belongs_to :team
 
+	def self.avg_composites
+		avg_composites = []
+		32.times do |number|
+			avg_composites << Season.where(team_id: number + 1).average(:composite).to_f.round(2)
+		end
+		avg_composites
+	end
+
 	def self.return_composites(year)
 		composites = []
 		correct_season = Season.where(year: year)
