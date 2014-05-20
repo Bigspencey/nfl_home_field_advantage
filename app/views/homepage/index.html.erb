@@ -3,18 +3,35 @@
 	<div class="observable" contenteditable="true" id="year">2004</div>
 </div>
 <div id="container" style="position: relative; margin:0 auto; width: 13 0%; height: 100%;"></div>
+<p class="date top-date">2013</p>
+<p class="date bottom-date">2004</p>
 <div id="slider"></div>
 
 <div class="decade-average">
 	<h2>Teams Ranked by Homefield Advantage over the Decade</h2>
-	<table>
+	<table class="list-1">
 		<tr>
 			<th>Rank</th>
 			<th>Team</th>
 			<th>Score</th>
 		</tr>
 		<% counter = 1 %>
-		<% @avg_composites.each do |composite| %>
+		<% @avg_composites[0].each do |composite| %>
+			<tr>
+				<td><%= "#{counter}." %></td>
+				<td><%= composite.pop %></td>
+				<td><%= composite.shift %></td>
+				<% counter += 1 %>
+			</tr>
+		<% end %>
+	</table>
+	<table class="list-2">
+		<tr>
+			<th>Rank</th>
+			<th>Team</th>
+			<th>Score</th>
+		</tr>
+		<% @avg_composites[1].each do |composite| %>
 			<tr>
 				<td><%= "#{counter}." %></td>
 				<td><%= composite.pop %></td>

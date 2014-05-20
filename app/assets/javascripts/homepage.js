@@ -48,7 +48,7 @@ window.onload = function() {
 	      borderWidth: 1,
 	      borderColor: '#FDFDFD',
 	      popupTemplate: function(geography, data) { //this function should just return a string
-	        return '<div class="hoverinfo"><strong>' + geography.properties.name + 'score'+  '</strong></div>';
+	        return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
 	      },
 	      popupOnHover: false, //disable the popup while hovering
 	      highlightOnHover: false,
