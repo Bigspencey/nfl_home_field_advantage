@@ -169,18 +169,27 @@ window.onload = function() {
 	}
 
 	function seasonExecute(response) {
-		var bubbles = $(".datamaps-bubble")
-		for (var i = 0; i < circles.length; i++) {
-			// var bubbles = [[circles[i]]]
-			circles[i].r.baseVal.value = response[i]
-			// for (var i = 0; i < bubbles.length; i++) {
-			// 	bubbles.attr("data-info", thisIsFucked(response[i]))
-			// 	function thisIsFucked(response) {
-			// 		return bubbles.attr("data-info").replace(/"radius"(.*),/, "\"radius\"" + ":" + response + ",")
-			// 	}
-			// }
-			// circles[0].transition().duration(800).attr("r", response[i])
-		}
+		$.each(circles, function(index, value) {
+			value.setAttribute("r", response[index])
+			debugger
+		})
 	}
-
 };
+
+		// Code that is mangled as fuck (See below) Everything else above works just dandy (minus the features we want)
+		// for (var i = 0; i < circles.length; i++) {
+		// 	circles[i].setAttribute("r", response[i])
+		// 	debugger
+		// }
+		// var bubbles = $(".datamaps-bubble")
+
+		// 	// var bubbles = [[circles[i]]]
+		// 	$.each(bubbles, function(index, value) {
+		// 		// return value.attr("data-info").replace(/"radius"(.*),/, "\"radius\"" + ":" + response[index] + ",")
+		// 	});
+		// 	// bubbles.attr("data-info", thisIsFucked(response[i]))
+		// 	// function thisIsFucked(response) {
+		// 	// 	return bubbles.attr("data-info").replace(/"radius"(.*),/, "\"radius\"" + ":" + response + ",")
+		// 	// }
+		// 	// circles[0].transition().duration(800).attr("r", response[i])
+		// }
