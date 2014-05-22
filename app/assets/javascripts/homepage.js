@@ -91,7 +91,11 @@ window.onload = function() {
 		   {name: 'Tampa Bay Buccaneers', latitude: 27.9710, longitude: -82.4650, radius: 20.5, fillKey: 'Tampabay'},
 		   {name: 'Tennessee Titans', latitude: 36.1667, longitude: -86.7833, radius: 7.5, fillKey: 'Tennessee'},
 		   {name: 'Washington Redskins', latitude: 38.9339, longitude: -76.8967, radius: 12.75, fillKey: 'Washington'}
-    ]);
+    ],
+    {popupTemplate: function(geography, data) {
+	        return '<div class="hoverinfo"><strong>' + data.name + "<br>" + "Composite: " + data.radius + '</strong></div>';
+	      }
+	      });
 
 	var circles = d3.selectAll('circle')[0];
 	
@@ -100,12 +104,11 @@ window.onload = function() {
 			var data = this.dataset.info.split("\"")[13]
 			var teamName = data.toLowerCase() + 2
 			this.style.fill = secondaryColors[teamName]
-			this.style.stroke = '#000000'
+			this.style.stroke = '#FFF'
 		}; 
 	};
 
 	var secondaryColors = {
-		stroke: "#000000",
 		arizona2: '#000000',
 		atlanta2: '#000000',
 		baltimore2: '#000000',
@@ -162,17 +165,31 @@ window.onload = function() {
 			contentType: 'json'
 		}).done(function(response) {
 			seasonExecute(response[0]);
-			console.log(response)
 		});
 	}
 
 	function seasonExecute(response) {
-		// var bubbles = d3.selectAll('circle')
-		for (var i = 0; i < circles.length; i++) {
-			// var bubbles = [[circles[i]]]
-			circles[i].r.baseVal.value = response[i]
-			// circles[0].transition().duration(800).attr("r", response[i])
-		}
+		$.each(circles, function(index, value) {
+			value.setAttribute("r", response[index])
+			debugger
+		})
 	}
-
 };
+
+		// Code that is mangled as fuck (See below) Everything else above works just dandy (minus the features we want)
+		// for (var i = 0; i < circles.length; i++) {
+		// 	circles[i].setAttribute("r", response[i])
+		// 	debugger
+		// }
+		// var bubbles = $(".datamaps-bubble")
+
+		// 	// var bubbles = [[circles[i]]]
+		// 	$.each(bubbles, function(index, value) {
+		// 		// return value.attr("data-info").replace(/"radius"(.*),/, "\"radius\"" + ":" + response[index] + ",")
+		// 	});
+		// 	// bubbles.attr("data-info", thisIsFucked(response[i]))
+		// 	// function thisIsFucked(response) {
+		// 	// 	return bubbles.attr("data-info").replace(/"radius"(.*),/, "\"radius\"" + ":" + response + ",")
+		// 	// }
+		// 	// circles[0].transition().duration(800).attr("r", response[i])
+		// }
