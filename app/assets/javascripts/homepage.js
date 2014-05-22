@@ -171,25 +171,13 @@ window.onload = function() {
 	function seasonExecute(response) {
 		$.each(circles, function(index, value) {
 			value.setAttribute("r", response[index])
-			debugger
+			value.setAttribute("data-info", generateString(value, response[index]))
 		})
 	}
+
+	function generateString(value, response) {
+		var string = value.getAttribute("data-info")
+		var replacementString = string.replace(/"radius"(.*),/, "\"radius\"" + ":" + response + ",")
+		return replacementString
+	}
 };
-
-		// Code that is mangled as fuck (See below) Everything else above works just dandy (minus the features we want)
-		// for (var i = 0; i < circles.length; i++) {
-		// 	circles[i].setAttribute("r", response[i])
-		// 	debugger
-		// }
-		// var bubbles = $(".datamaps-bubble")
-
-		// 	// var bubbles = [[circles[i]]]
-		// 	$.each(bubbles, function(index, value) {
-		// 		// return value.attr("data-info").replace(/"radius"(.*),/, "\"radius\"" + ":" + response[index] + ",")
-		// 	});
-		// 	// bubbles.attr("data-info", thisIsFucked(response[i]))
-		// 	// function thisIsFucked(response) {
-		// 	// 	return bubbles.attr("data-info").replace(/"radius"(.*),/, "\"radius\"" + ":" + response + ",")
-		// 	// }
-		// 	// circles[0].transition().duration(800).attr("r", response[i])
-		// }
