@@ -172,6 +172,7 @@ window.onload = function() {
 		$.each(circles, function(index, value) {
 			value.setAttribute("r", response[index]) //Visually adjusts radius
 			value.setAttribute("data-info", generateString(value, response[index])) //Adjusts data-info attribute for popUpTemplate
+			debugger
 		})
 	}
 
