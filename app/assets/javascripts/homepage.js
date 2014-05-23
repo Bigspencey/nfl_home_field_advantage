@@ -170,7 +170,7 @@ window.onload = function() {
 
 	function seasonExecute(response) {
 		$.each(circles, function(index, value) {
-			value.setAttribute("r", response[index])
+			$(value).attr({r: response[index]});
 			value.setAttribute("data-info", generateString(value, response[index]))
 		})
 	}
