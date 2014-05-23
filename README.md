@@ -12,3 +12,5 @@ Special thank you to:
 
 ESPN.go.com for home win/loss records.
 teamrankings.com for home avg. off/def
+
+http://nfl-homefield-advantage.herokuapp.com/
