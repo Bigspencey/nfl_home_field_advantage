@@ -1,17 +1,14 @@
 nfl_home_field_advantage
 ========================
 
-A D3.js map of NFL Teams' Home Field Advantage over the past decade.
+A D3.js map of NFL Teams' Home Field Advantage over the past decade. The homefield advantage composite value was derived from the home average offense/defense and win percentage of each team. This composite value is represented by a circle on the map.
 
 Team:
-
 Darcey Lachtman
 Spencer Smitherman
-David Goodman 
 John Olmstead
 
-Database Schema:
+Special thank you to:
 
-[Imgur](http://i.imgur.com/vStL9GR.png)
-
-[Imgur](http://i.imgur.com/ppBMDyp.png)
+ESPN.go.com for home win/loss records.
+teamrankings.com for home avg. off/def
