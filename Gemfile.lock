@@ -136,7 +136,7 @@ PLATFORMS
 
 DEPENDENCIES
   d3-rails
-  debugger (~> 1.6.6)
+  debugger
   httparty
   jbuilder (~> 1.2)
   jquery-rails
