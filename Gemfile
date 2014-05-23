@@ -14,5 +14,9 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'd3-rails'
 
+group :development do
+  gem "debugger"
+end
+
 gem 'rails_12factor', group: :production
 
