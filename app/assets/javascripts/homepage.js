@@ -116,6 +116,16 @@ window.onload = function() {
 	var circles = d3.selectAll('circle')[0];
 	execute.hoverEffect(circles)
 
+
+	$.ajax({
+		url: '/',
+		method: 'GET',
+		data: {year: $('year').text()},
+		contentType: 'json'
+	}).done(function(response) {
+		
+	})
+
 };
 
 var execute = {
