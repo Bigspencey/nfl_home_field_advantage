@@ -97,9 +97,7 @@ window.onload = function() {
 	   }
 	});
 
-	var circles = d3.selectAll('circle')[0];
-	
-	execute.hoverEffect(circles)
+	// Jquery Slider
 
 	$(function() {
     $("#slider").slider({
@@ -113,7 +111,10 @@ window.onload = function() {
 	        execute.requestComposite();
       		}
     	});
- 	 });
+ 	});
+
+	var circles = d3.selectAll('circle')[0];
+	execute.hoverEffect(circles)
 
 };
 
