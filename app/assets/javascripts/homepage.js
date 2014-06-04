@@ -93,55 +93,11 @@ window.onload = function() {
 		   {name: 'Washington Redskins', latitude: 38.9339, longitude: -76.8967, radius: 12.75, fillKey: 'Washington'}
     ],
     {popupTemplate: function(geography, data) {
-	        return '<div class="hoverinfo"><strong>' + data.name + "<br>" + "Composite: " + data.radius + '</strong></div>';
-	      }
-	      });
+	    return '<div class="hoverinfo"><strong>' + data.name + "<br>" + "Composite: " + data.radius + '</strong></div>';
+	   }
+	});
 
-	var circles = d3.selectAll('circle')[0];
-	
-	for (var i = 0; i < circles.length; i++) { 
-		circles[i].onmouseover = function() { 
-			var data = this.dataset.info.split("\"")[13]
-			var teamName = data.toLowerCase() + 2
-			this.style.fill = secondaryColors[teamName]
-			this.style.stroke = '#FFF'
-		}; 
-	};
-
-	var secondaryColors = {
-		arizona2: '#000000',
-		atlanta2: '#000000',
-		baltimore2: '#000000',
-		buffalo2: '#C60C30',
-		carolina2: '#0088CE',
-		chicago2: '#DD4814',
-		cincinnati2: '#FB4F14',
-		cleveland2: '#E34912',
-		dallas2: '#8C8B8A',
-		denver2: '#002244',
-		detroit2: '#C5C7CF',
-		greenbay2: '#FFCC00',
-		houston2: '#B31B34',
-		indianapolis2: '#FFFFFF',
-		jacksonville2: '#007198',
-		kansascity2: '#F2C800',
-		miami2: '#015679',
-		minnesota2: '#FFC52F',
-		newengland2: '#C80815',
-		neworleans2: '#000000',
-		giants2: '#CA001A',
-		jets2: '#FFFFFF',
-		oakland2: '#000000',
-		philadelphia2: '#708090',
-		pittsburgh2: '#F2C800',
-		sandiego2: '#EEC607',
-		sanfrancisco2: '#E6BE8A',
-		seattle2: '#4EAE47',
-		stlouis2: '#C9AF74',
-		tampabay2: '#89765F',
-		tennessee2: '#000080',
-		washington2: '#FFB612'
-	}
+	// Jquery Slider
 
 	$(function() {
     $("#slider").slider({
@@ -152,32 +108,86 @@ window.onload = function() {
       	step: 1,
       	slide: function(event, ui) {
 	        $('#year').empty().append(ui.value)
-	        requestComposite();
+	        execute.requestComposite();
       		}
     	});
- 	 });
+ 	});
 
-	function requestComposite() {
+	var circles = d3.selectAll('circle')[0];
+	execute.hoverEffect(circles)
+
+};
+
+var execute = {
+
+	hoverEffect: function(circles) {
+		for (var i = 0; i < circles.length; i++) { 
+			circles[i].onmouseover = function() { 
+				var data = this.dataset.info.split("\"")[13]
+				var teamName = data.toLowerCase() + 2
+				this.style.fill = secondaryColors[teamName]
+				this.style.stroke = '#FFF'
+			}; 
+		};
+	},
+
+	requestComposite: function() {
 		$.ajax({
 			url: '/',
 			method: 'GET',
 			data: {year: $('#year').text()},
 			contentType: 'json'
 		}).done(function(response) {
-			seasonExecute(response[0]);
+			execute.seasonExecute(response[0]);
 		});
-	}
+	},
 
-	function seasonExecute(response) {
+	seasonExecute: function(response) {
+		var circles = d3.selectAll('circle')[0];
 		$.each(circles, function(index, value) {
 			$(value).attr({r: response[index]});
-			value.setAttribute("data-info", generateString(value, response[index]))
+			value.setAttribute("data-info", execute.generateString(value, response[index]))
 		})
-	}
+	},
 
-	function generateString(value, response) {
+	generateString: function(value, response) {
 		var string = value.getAttribute("data-info")
 		var replacementString = string.replace(/"radius"(.*),/, "\"radius\"" + ":" + response + ",")
 		return replacementString
-	}
-};
+	}	
+}
+
+var secondaryColors = {
+	arizona2: '#000000',
+	atlanta2: '#000000',
+	baltimore2: '#000000',
+	buffalo2: '#C60C30',
+	carolina2: '#0088CE',
+	chicago2: '#DD4814',
+	cincinnati2: '#FB4F14',
+	cleveland2: '#E34912',
+	dallas2: '#8C8B8A',
+	denver2: '#002244',
+	detroit2: '#C5C7CF',
+	greenbay2: '#FFCC00',
+	houston2: '#B31B34',
+	indianapolis2: '#FFFFFF',
+	jacksonville2: '#007198',
+	kansascity2: '#F2C800',
+	miami2: '#015679',
+	minnesota2: '#FFC52F',
+	newengland2: '#C80815',
+	neworleans2: '#000000',
+	giants2: '#CA001A',
+	jets2: '#FFFFFF',
+	oakland2: '#000000',
+	philadelphia2: '#708090',
+	pittsburgh2: '#F2C800',
+	sandiego2: '#EEC607',
+	sanfrancisco2: '#E6BE8A',
+	seattle2: '#4EAE47',
+	stlouis2: '#C9AF74',
+	tampabay2: '#89765F',
+	tennessee2: '#000080',
+	washington2: '#FFB612'
+}
