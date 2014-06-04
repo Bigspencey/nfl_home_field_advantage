@@ -152,32 +152,37 @@ window.onload = function() {
       	step: 1,
       	slide: function(event, ui) {
 	        $('#year').empty().append(ui.value)
-	        requestComposite();
+	        execute.requestComposite();
       		}
     	});
  	 });
 
-	function requestComposite() {
+};
+
+var execute = {
+
+	requestComposite: function() {
 		$.ajax({
 			url: '/',
 			method: 'GET',
 			data: {year: $('#year').text()},
 			contentType: 'json'
 		}).done(function(response) {
-			seasonExecute(response[0]);
+			execute.seasonExecute(response[0]);
 		});
-	}
+	},
 
-	function seasonExecute(response) {
+	seasonExecute: function(response) {
+		var circles = d3.selectAll('circle')[0];
 		$.each(circles, function(index, value) {
 			$(value).attr({r: response[index]});
-			value.setAttribute("data-info", generateString(value, response[index]))
+			value.setAttribute("data-info", execute.generateString(value, response[index]))
 		})
-	}
+	},
 
-	function generateString(value, response) {
+	generateString: function(value, response) {
 		var string = value.getAttribute("data-info")
 		var replacementString = string.replace(/"radius"(.*),/, "\"radius\"" + ":" + response + ",")
 		return replacementString
-	}
-};
+	}	
+}
