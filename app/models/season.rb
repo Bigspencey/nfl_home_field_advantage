@@ -12,9 +12,10 @@ class Season < ActiveRecord::Base
 		seasons_sorted_by_team.each do |year|
 			year.each_with_index do |season, index|
 				composites << season.composite.to_f.round(2)
-				[season].replace(composites)
 			end
 		end
+		divided_seasons = composites.each_slice(32).to_a
+		divided_years = divided_seasons.each_slice(10).to_a
 	end
 
 	def self.avg_composites

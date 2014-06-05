@@ -122,7 +122,7 @@ window.onload = function() {
 		method: 'GET',
 		contentType: 'json'
 	}).done(function(response) {
-		debugger
+		execute.seasonExecute(response[0])
 	})
 
 };
@@ -138,17 +138,6 @@ var execute = {
 				this.style.stroke = '#FFF'
 			}; 
 		};
-	},
-
-	requestComposite: function() {
-		$.ajax({
-			url: '/',
-			method: 'GET',
-			data: {year: $('#year').text()},
-			contentType: 'json'
-		}).done(function(response) {
-			execute.seasonExecute(response[0]);
-		});
 	},
 
 	seasonExecute: function(response) {
@@ -200,3 +189,42 @@ var secondaryColors = {
 	tennessee2: '#000080',
 	washington2: '#FFB612'
 }
+
+// var execute = {
+
+// 	hoverEffect: function(circles) {
+// 		for (var i = 0; i < circles.length; i++) { 
+// 			circles[i].onmouseover = function() { 
+// 				var data = this.dataset.info.split("\"")[13]
+// 				var teamName = data.toLowerCase() + 2
+// 				this.style.fill = secondaryColors[teamName]
+// 				this.style.stroke = '#FFF'
+// 			}; 
+// 		};
+// 	},
+
+// 	requestComposite: function() {
+// 		$.ajax({
+// 			url: '/',
+// 			method: 'GET',
+// 			data: {year: $('#year').text()},
+// 			contentType: 'json'
+// 		}).done(function(response) {
+// 			execute.seasonExecute(response[0]);
+// 		});
+// 	},
+
+// 	seasonExecute: function(response) {
+// 		var circles = d3.selectAll('circle')[0];
+// 		$.each(circles, function(index, value) {
+// 			$(value).attr({r: response[index]});
+// 			value.setAttribute("data-info", execute.generateString(value, response[index]))
+// 		})
+// 	},
+
+// 	generateString: function(value, response) {
+// 		var string = value.getAttribute("data-info")
+// 		var replacementString = string.replace(/"radius"(.*),/, "\"radius\"" + ":" + response + ",")
+// 		return replacementString
+// 	}	
+// }
