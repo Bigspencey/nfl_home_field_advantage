@@ -120,10 +120,9 @@ window.onload = function() {
 	$.ajax({
 		url: '/',
 		method: 'GET',
-		data: {year: $('year').text()},
 		contentType: 'json'
 	}).done(function(response) {
-		
+		debugger
 	})
 
 };

@@ -3,6 +3,20 @@ YEARS = ["2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005",
 class Season < ActiveRecord::Base
 	belongs_to :team
 
+	def self.return_all_composites
+		composites = []
+		sorted_seasons = Season.all.order(year: :asc).each_slice(32).to_a # A nested array of 10 seasons
+		seasons_sorted_by_team = sorted_seasons.each do |season|
+			season.sort! { |a,b| a.team_id <=> b.team_id } # Sorts the nested array of 10 seasons by team_id
+		end
+		seasons_sorted_by_team.each do |year|
+			year.each_with_index do |season, index|
+				composites << season.composite.to_f.round(2)
+				[season].replace(composites)
+			end
+		end
+	end
+
 	def self.avg_composites
 		avg_composites = []
 		team_names = []
