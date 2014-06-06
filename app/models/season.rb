@@ -29,16 +29,6 @@ class Season < ActiveRecord::Base
 		teams_composites.reverse.each_slice(16).to_a
 	end
 
-	def self.return_composites(year)
-		composites = []
-		correct_season = Season.where(year: year)
-		sorted_season = correct_season.find(:all, include: :team, order: 'teams.id')
-		sorted_season.each do |season|
-			composites << season.composite.to_f.round(2)
-		end
-		composites
-	end
-
 	def self.find_composite
 		collection_of_seasons = Season.order(year: :asc).each_slice(32).to_a
 		collection_of_seasons.each do |season|

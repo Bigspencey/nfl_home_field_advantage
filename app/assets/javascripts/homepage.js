@@ -108,7 +108,7 @@ window.onload = function() {
       	step: 1,
       	slide: function(event, ui) {
 	        $('#year').empty().append(ui.value)
-	        execute.seasonCoordinate(COMPOSITES);
+	        execute.seasonController(COMPOSITES);
       		}
     	});
  	});
@@ -122,12 +122,10 @@ window.onload = function() {
 		contentType: 'json'
 	}).done(function(response) {
 		window.COMPOSITES = response[0][0]
-		execute.initializeSeason(response[0][0])
+		execute.seasonController(response[0][0])
 	})
 
 };
-
-
 
 var execute = {
 
@@ -142,12 +140,14 @@ var execute = {
 		};
 	},
 
-	initializeSeason: function(response) {
-		var circles = d3.selectAll('circle')[0];
-		$.each(circles, function(index, value) {
-			$(value).attr({r: response[0][index]});
-			value.setAttribute("data-info", execute.generateString(value, response[0][index]))
-		})
+	seasonController: function(years) {
+		for (var i = 0; i < years.length; i++) {
+			switch ($('#year').text()) {
+				case String(2004 + i):
+				execute.seasonExecute(years[i])
+				break;
+			}
+		}
 	},
 
 	seasonExecute: function(season) {
@@ -156,41 +156,6 @@ var execute = {
 			$(value).attr({r: season[index]});
 			value.setAttribute("data-info", execute.generateString(value, season[index]))
 		})
-	},
-
-	seasonCoordinate: function(years) {
-		switch ($('#year').text()) {
-			case "2004":
-			execute.seasonExecute(years[0])
-			break;
-			case "2005":
-			execute.seasonExecute(years[1])
-			break;
-			case "2006":
-			execute.seasonExecute(years[2])
-			break;
-			case "2007":
-			execute.seasonExecute(years[3])
-			break;
-			case "2008":
-			execute.seasonExecute(years[4])
-			break;
-			case "2009":
-			execute.seasonExecute(years[5])
-			break;
-			case "2010":
-			execute.seasonExecute(years[6])
-			break;
-			case "2011":
-			execute.seasonExecute(years[7])
-			break;
-			case "2012":
-			execute.seasonExecute(years[8])
-			break;
-			case "2013":
-			execute.seasonExecute(years[9])
-			break;
-		}
 	},
 
 	generateString: function(value, response) {
@@ -234,42 +199,3 @@ var secondaryColors = {
 	tennessee2: '#000080',
 	washington2: '#FFB612'
 }
-
-// var execute = {
-
-// 	hoverEffect: function(circles) {
-// 		for (var i = 0; i < circles.length; i++) { 
-// 			circles[i].onmouseover = function() { 
-// 				var data = this.dataset.info.split("\"")[13]
-// 				var teamName = data.toLowerCase() + 2
-// 				this.style.fill = secondaryColors[teamName]
-// 				this.style.stroke = '#FFF'
-// 			}; 
-// 		};
-// 	},
-
-// 	requestComposite: function() {
-// 		$.ajax({
-// 			url: '/',
-// 			method: 'GET',
-// 			data: {year: $('#year').text()},
-// 			contentType: 'json'
-// 		}).done(function(response) {
-// 			execute.seasonExecute(response[0]);
-// 		});
-// 	},
-
-// 	seasonExecute: function(response) {
-// 		var circles = d3.selectAll('circle')[0];
-// 		$.each(circles, function(index, value) {
-// 			$(value).attr({r: response[index]});
-// 			value.setAttribute("data-info", execute.generateString(value, response[index]))
-// 		})
-// 	},
-
-// 	generateString: function(value, response) {
-// 		var string = value.getAttribute("data-info")
-// 		var replacementString = string.replace(/"radius"(.*),/, "\"radius\"" + ":" + response + ",")
-// 		return replacementString
-// 	}	
-// }
