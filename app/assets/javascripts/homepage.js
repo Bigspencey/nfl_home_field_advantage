@@ -108,24 +108,25 @@ window.onload = function() {
       	step: 1,
       	slide: function(event, ui) {
 	        $('#year').empty().append(ui.value)
-	        execute.requestComposite();
+	        execute.seasonCoordinate(COMPOSITES);
       		}
     	});
  	});
 
-	var circles = d3.selectAll('circle')[0];
 	execute.hoverEffect(circles)
-
 
 	$.ajax({
 		url: '/',
 		method: 'GET',
 		contentType: 'json'
 	}).done(function(response) {
-		execute.seasonExecute(response[0])
+		window.COMPOSITES = response[0][0]
+		execute.initializeSeason(response[0][0])
 	})
 
 };
+
+var circles = d3.selectAll('circle')[0];
 
 var execute = {
 
@@ -140,12 +141,54 @@ var execute = {
 		};
 	},
 
-	seasonExecute: function(response) {
+	initializeSeason: function(response) {
+		$.each(circles, function(index, value) {
+			$(value).attr({r: response[0][index]});
+			value.setAttribute("data-info", execute.generateString(value, response[0][index]))
+		})
+	},
+
+	seasonExecute: function(season) {
 		var circles = d3.selectAll('circle')[0];
 		$.each(circles, function(index, value) {
-			$(value).attr({r: response[index]});
+			$(value).attr({r: season[index]});
 			value.setAttribute("data-info", execute.generateString(value, response[index]))
 		})
+	},
+
+	seasonCoordinate: function(years) {
+		switch ($('#year').text()) {
+			case "2004":
+			execute.seasonExecute(years[0])
+			break;
+			case "2005":
+			execute.seasonExecute(years[1])
+			break;
+			case "2006":
+			execute.seasonExecute(years[2])
+			break;
+			case "2007":
+			execute.seasonExecute(years[3])
+			break;
+			case "2008":
+			execute.seasonExecute(years[4])
+			break;
+			case "2009":
+			execute.seasonExecute(years[5])
+			break;
+			case "2010":
+			execute.seasonExecute(years[6])
+			break;
+			case "2011":
+			execute.seasonExecute(years[7])
+			break;
+			case "2012":
+			execute.seasonExecute(years[8])
+			break;
+			case "2013":
+			execute.seasonExecute(years[9])
+			break;
+		}
 	},
 
 	generateString: function(value, response) {
