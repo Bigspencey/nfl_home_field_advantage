@@ -150,13 +150,13 @@ var execute = {
 		})
 	},
 
-	// seasonExecute: function(season) {
-	// 	var circles = d3.selectAll('circle')[0];
-	// 	$.each(circles, function(index, value) {
-	// 		$(value).attr({r: season[index]});
-	// 		value.setAttribute("data-info", execute.generateString(value, response[index]))
-	// 	})
-	// },
+	seasonExecute: function(season) {
+		var circles = d3.selectAll('circle')[0];
+		$.each(circles, function(index, value) {
+			$(value).attr({r: season[index]});
+			value.setAttribute("data-info", execute.generateString(value, season[index]))
+		})
+	},
 
 	seasonCoordinate: function(years) {
 		switch ($('#year').text()) {
