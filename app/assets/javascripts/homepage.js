@@ -108,13 +108,22 @@ window.onload = function() {
       	step: 1,
       	slide: function(event, ui) {
 	        $('#year').empty().append(ui.value)
-	        execute.requestComposite();
+	        execute.seasonController(COMPOSITES);
       		}
     	});
  	});
 
 	var circles = d3.selectAll('circle')[0];
 	execute.hoverEffect(circles)
+
+	$.ajax({
+		url: '/',
+		method: 'GET',
+		contentType: 'json'
+	}).done(function(response) {
+		window.COMPOSITES = response[0][0]
+		execute.seasonController(response[0][0])
+	})
 
 };
 
@@ -131,22 +140,21 @@ var execute = {
 		};
 	},
 
-	requestComposite: function() {
-		$.ajax({
-			url: '/',
-			method: 'GET',
-			data: {year: $('#year').text()},
-			contentType: 'json'
-		}).done(function(response) {
-			execute.seasonExecute(response[0]);
-		});
+	seasonController: function(years) {
+		for (var i = 0; i < years.length; i++) {
+			switch ($('#year').text()) {
+				case String(2004 + i):
+				execute.seasonExecute(years[i])
+				break;
+			}
+		}
 	},
 
-	seasonExecute: function(response) {
+	seasonExecute: function(season) {
 		var circles = d3.selectAll('circle')[0];
 		$.each(circles, function(index, value) {
-			$(value).attr({r: response[index]});
-			value.setAttribute("data-info", execute.generateString(value, response[index]))
+			$(value).attr({r: season[index]});
+			value.setAttribute("data-info", execute.generateString(value, season[index]))
 		})
 	},
 
