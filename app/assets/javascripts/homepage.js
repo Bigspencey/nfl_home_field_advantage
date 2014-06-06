@@ -163,7 +163,7 @@ var execute = {
 		var replacementString = string.replace(/"radius"(.*),/, "\"radius\"" + ":" + response + ",")
 		return replacementString
 	}	
-}
+};
 
 var secondaryColors = {
 	arizona2: '#000000',
