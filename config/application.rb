@@ -4,9 +4,11 @@ require 'rails/all'
 
 require 'rack/cache'
 
-if !Rails.env.development? && !Rails.env.test?
-  config.middleware.insert_before Rack::Cache, Rack::Static, urls: [config.assets.prefix],     root: 'public'
-end
+config.middleware.delete Rack::Cache
+
+# if !Rails.env.development? && !Rails.env.test?
+#   config.middleware.insert_before Rack::Cache, Rack::Static, urls: [config.assets.prefix],     root: 'public'
+# end
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
