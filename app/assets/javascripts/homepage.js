@@ -113,6 +113,7 @@ window.onload = function() {
     	});
  	});
 
+	var circles = d3.selectAll('circle')[0];
 	execute.hoverEffect(circles)
 
 	$.ajax({
@@ -126,7 +127,7 @@ window.onload = function() {
 
 };
 
-var circles = d3.selectAll('circle')[0];
+
 
 var execute = {
 
@@ -142,19 +143,20 @@ var execute = {
 	},
 
 	initializeSeason: function(response) {
+		var circles = d3.selectAll('circle')[0];
 		$.each(circles, function(index, value) {
 			$(value).attr({r: response[0][index]});
 			value.setAttribute("data-info", execute.generateString(value, response[0][index]))
 		})
 	},
 
-	seasonExecute: function(season) {
-		var circles = d3.selectAll('circle')[0];
-		$.each(circles, function(index, value) {
-			$(value).attr({r: season[index]});
-			value.setAttribute("data-info", execute.generateString(value, response[index]))
-		})
-	},
+	// seasonExecute: function(season) {
+	// 	var circles = d3.selectAll('circle')[0];
+	// 	$.each(circles, function(index, value) {
+	// 		$(value).attr({r: season[index]});
+	// 		value.setAttribute("data-info", execute.generateString(value, response[index]))
+	// 	})
+	// },
 
 	seasonCoordinate: function(years) {
 		switch ($('#year').text()) {
